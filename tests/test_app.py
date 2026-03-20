@@ -12,7 +12,7 @@ def test_get_tasks(client):
     assert response.status_code == 200
 
 def test_create_task(client):
-    response = client.post('/tasks', json={
+    response = client.post('/api/tasks', json={
         'title': 'Test Task',
         'description': 'This is a test task',
         'status': 'pending'
@@ -20,11 +20,11 @@ def test_create_task(client):
     assert response.status_code == 201
 
 def test_update_task(client):
-    response = client.put('/tasks/1', json={
+    response = client.put('/api/tasks/1', json={
         'status': 'done'
     })
     assert response.status_code in [200, 404]
 
 def test_delete_task(client):
-    response = client.delete('/tasks/1')
+    response = client.delete('/api/tasks/1')
     assert response.status_code in [200, 404]
