@@ -19,7 +19,7 @@ pipeline {
         stage('Run Tests') {
             steps {
                 echo 'Running tests...'
-                sh 'docker run --rm task-manager pytest tests/test_app.py'
+                sh 'docker run --rm -e PYTHONPATH=/app task-manager pytest tests/test_app.py'
             }
         }
 
